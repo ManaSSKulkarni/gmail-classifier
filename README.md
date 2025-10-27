@@ -1,121 +1,94 @@
  
  
-# Gmail Classifier using Google OAuth and OpenAI GPT-4o
+# Gmail Classifier using Google OAuth and GPT-4o
 
-A full-stack web application that allows users to **log in with Google**, fetch their **recent Gmail emails**, and classify them into categories such as **Important, Promotional, Social, Marketing, Spam, General, or Unclassified** using **OpenAI GPT-4o**.
-
----
-
-## Features
-
--  **Google OAuth** login — secure Gmail authentication  
--  **Fetch last 15 Gmail emails** (using Gmail API)  
--  **AI classification** of emails with GPT-4o  
--  Dropdown filter by category  
--  Expand/Shrink view for individual emails  
--  API key securely stored in browser `localStorage` (no DB needed)
+A full-stack web application that allows users to log in with Google OAuth, fetch their latest emails from Gmail, and classify them into categories (Important, Promotions, Social, Marketing, Spam, General) using **OpenAI GPT-4o**.
 
 ---
 
-## Tech Stack
+## 🚀 Features
 
-| Layer    | Technology                                 |
-|------- --|--------------------------------------------|
-| Frontend | React.js, Axios                            |
-| Backend  | Node.js, Express.js, Passport.js           |
-| APIs     | Google OAuth 2.0, Gmail API, OpenAI GPT-4o |
-| Styling  | Inline CSS / Tailwind-ready                |
+- 🔑 Login securely using **Google OAuth**
+- 📩 Fetch latest **15 emails** from Gmail
+- 🧠 Classify emails using **GPT-4o**
+- 💾 Save user’s OpenAI key in local storage
+- 🖥️ Simple & clean **React frontend** with Tailwind
+- 🧩 Backend built using **Express.js** and **LangChain.js**
 
+---
 
-## Prerequisites
+## 🧰 Tech Stack
 
-- Node.js v18+ and npm installed
-- OpenAI API key
-- Google Cloud project with OAuth credentials
+**Frontend:**
+- React.js
+- Tailwind CSS
+- React Router
 
-## Setup & Run Instructions
+**Backend:**
+- Express.js
+- LangChain.js
+- Google APIs (OAuth, Gmail API)
+- OpenAI GPT-4o
 
-### 1️. Clone the Repository
+---
 
-  git clone https://github.com/ManaSSKulkarni/gmail-classifier.git
-  cd gmail-classifier
+## ⚙️ Setup Instructions
 
-### 2. Install dependencies
+### 1️⃣ Clone the repo
+git clone https://github.com/ManaSSKulkarni/gmail-classifier.git
+cd gmail-classifier
 
-  npm install
+### 2️⃣ Install dependencies
+cd client
+npm install
+cd ../server
+npm install
 
-### 3. Configure environment variables
+### 3️⃣ Configure environment variables
 
-  Create a .env file in the root folder.
+Create a .env file in /server with the following:
 
-  Add the following placeholders:
+GOOGLE_CLIENT_ID=your_google_client_id_here
+GOOGLE_CLIENT_SECRET=your_google_client_secret_here
+OPENAI_API_KEY=your_openai_api_key_here
+SESSION_SECRET=your_random_secret_key
 
-   GOOGLE_CLIENT_ID=your_google_client_id_here
-   GOOGLE_CLIENT_SECRET=your_google_client_secret_here
-   SESSION_SECRET=some_random_string
-   OPENAI_API_KEY=your_openai_api_key_here
+### 4️⃣ Start the backend server
+cd server
+npm start
 
+### 5️⃣ Start the frontend
+cd ../client
+npm start
 
-  Note: .env is ignored in Git, so sensitive keys are not pushed. See .env.example for reference.
+### 💡 How It Works
 
-### 4. Google OAuth Test Users
+Login: User logs in with Google OAuth → token generated
 
-  Google OAuth app has intended testers (e.g., theindianappguy@gmail.com) added as Test Users.
+Fetch Emails: App fetches latest X emails (default 15) from Gmail
 
-  They can login with their Gmail accounts to test the app.
+Classify: GPT-4o model categorizes each email into predefined labels
 
-### 5. Set up the backend
+Display: Emails shown with category filters and expandable view
 
-  cd server
-  npm install
+### 🧠 Categories
 
+## Category	Description
+Important	
+Personal/work emails requiring attention
+Promotions	Marketing/sales-related content
+Social network, friends, or family messages
+Marketing	Newsletters or marketing updates
+Spam	Unsolicited or irrelevant emails
+General	
+Default for uncategorized
 
-### 6. .env file inside /server with:
-
-  GOOGLE_CLIENT_ID=google_client_id
-  GOOGLE_CLIENT_SECRET=google_client_secret
-  PORT=5000
-
-
-### 7. Run the backend:
-
-  node server.js
-
-  ✅ Server should start on http://localhost:5000
-
-
-### 8.  Set Up the Frontend
-
-  cd ../client
-  npm install
-  npm start
-
-✅ React app will run on http://localhost:3000
-
-
-### 9. Usage Guide
-
-## 9.1 On the Login Page:
-
-    1. Enter your OpenAI API key
-
-    2. Click “Save API Key”
-
-    3. Click “Login with Google”
-
-    4. Log in using your Gmail (grant “read emails” permission).
-
-    5. You’ll be redirected to the Email Viewer page.
-
-    6. Click “Classify Emails” → GPT-4o will categorize them.
-
-    7. Use dropdown filters or click any email to expand/shrink.
-
-### 9.2 Common Issues
+### Common Issues
 
  Access Blocked : Ony Test Users are allowed
  No emails showing : Log In Issue
  Failed to classify : Open AI Key issue.
+ Mail Unclassified : GPT-4o Expired or needs renewal.
 
 ### 10 📁 Folder Structure
 
@@ -137,6 +110,11 @@ gmail-classifier/
 │
 └── README.md
 
+
+### 🪶 License
+
+This project is licensed under the MIT License
+
 ### 🧠 Notes
 
   The app is currently in Testing mode.
@@ -148,11 +126,11 @@ gmail-classifier/
 
 ### ❤️ Developer’s Note
 
- “Maybe some things are meant to be incomplete — like a mango tree. Fruits come only when the time is right.” 🌱
+ “Everything has a timing — like a mango tree. Despite all efforts, Fruits come only when the season is right.” 🌱
 
- This project reflects my learning journey with full-stack OAuth integrations, API handling, and AI-powered classification using GPT-4o.
+ This project reflects my learning and work with full-stack OAuth integrations, API handling, and AI-powered classification using GPT-4o.
 
-Developed by: Manas S Kulkarni
+### Developed by: Manas S Kulkarni
 📧 [manaskulkarniwork@gmail.com]
 💼 GitHub: https://github.com/ManaSSKulkarni
 
